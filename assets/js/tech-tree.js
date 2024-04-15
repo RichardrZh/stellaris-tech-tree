@@ -138,12 +138,14 @@ $(document).ready(function() {
     }, 100)
 });
 
-function _load(jsonData, tree) {
-    var container = '#tech-tree-' + jsonData.children[0].name;
-    var myconfig = {container: container};
-    $.extend(true, myconfig, config);
+function _load(jsonData, area) {
+    // area should equal jsonData.children[0].name
+    var config_addendum = {container: `#tech-tree-${jsonData.children[0].name}`};
+    $.extend(true, config, 
+        config_addendum
+    );
 
-    charts[tree] = new Treant({chart:myconfig, nodeStructure: jsonData.children[0]}, function () {},$);
+    charts[area] = new Treant({chart:config_addendum, nodeStructure: jsonData.children[0]}, function () {},$);
 }
 
 function load_tree() {

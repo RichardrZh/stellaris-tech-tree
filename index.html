@@ -28,6 +28,8 @@
     <script src="./assets/vendor/lozad.min.js"></script>
     <script src="./assets/vendor/jsrender.min.js"></script>
     <script src="./assets/js/dynamic-drag.js"></script>
+
+    <!-- below script is for tech tree template used in tech-tree.js-->
     <script id="node-template" type="text/x-jsrender">
       <div class="icon lozad" data-background-image="../assets/img/{{:key}}.png"></div>
       <p class="node-name" title="{{:name}}">{{:name}}</p>
@@ -110,7 +112,7 @@
     <script>
       addEventListener('popstate', event => window.location.reload());
       const load_page = (param, title) => {
-        history.pushState({pageID: param}, param, `${param}/`);
+        history.pushState({pageID: param}, "", `v/${param}/`);
         document.title = title || param;
         $('<link>').appendTo('head').attr({
             type: 'text/css', 
