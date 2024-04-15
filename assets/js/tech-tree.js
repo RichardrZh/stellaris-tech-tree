@@ -141,9 +141,7 @@ $(document).ready(function() {
 function _load(jsonData, area) {
     // area should equal jsonData.children[0].name
     var config_addendum = {container: `#tech-tree-${jsonData.children[0].name}`};
-    $.extend(true, config, 
-        config_addendum
-    );
+    $.extend(true, config_addendum, config);
 
     charts[area] = new Treant({chart:config_addendum, nodeStructure: jsonData.children[0]}, function () {},$);
 }
@@ -157,6 +155,7 @@ function load_tree() {
             });
         }
     });
+    
     $.getJSON('anomalies.json', function(jsonData) {
         // Event techs don't really need a Tree
         $(jsonData).each(function(index, item) {
