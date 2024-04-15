@@ -141,6 +141,8 @@ $(document).ready(function() {
 function _load(jsonData, area) {
     // area should equal jsonData.children[0].name
     var config_addendum = {container: `#tech-tree-${jsonData.children[0].name}`};
+
+    // note: for some reason, the object merge needs to be this order idk ¯\_(ツ)_/¯
     $.extend(true, config_addendum, config);
 
     charts[area] = new Treant({chart:config_addendum, nodeStructure: jsonData.children[0]}, function () {},$);
